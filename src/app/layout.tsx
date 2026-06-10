@@ -8,7 +8,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'BDJobs AI - Smart Job Marketplace for Bangladesh',
+  title: 'SkillBridge BD - Smart Job Marketplace for Bangladesh',
   description:
     'AI-powered job marketplace connecting talented professionals with top employers in Bangladesh. Smart matching, intelligent recommendations, and seamless hiring.',
 }

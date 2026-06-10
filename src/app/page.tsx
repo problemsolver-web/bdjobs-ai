@@ -43,7 +43,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Why Choose BDJobs AI?
+              Why Choose SkillBridge BD?
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               Powered by intelligent algorithms that understand your career goals
@@ -142,7 +142,7 @@ export default function Home() {
             Ready to Find Your Perfect Match?
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Join thousands of professionals and companies already using BDJobs AI
+            Join thousands of professionals and companies already using SkillBridge BD
             to connect and grow.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -167,11 +167,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-white">BDJobs</span>
-              <span className="text-xl font-bold text-secondary-400">AI</span>
+              <span className="text-xl font-bold text-white">SkillBridge</span>
+              <span className="text-xl font-bold text-secondary-400">BD</span>
             </div>
             <p className="text-sm">
-              &copy; {new Date().getFullYear()} BDJobs AI. All rights reserved.
+              &copy; {new Date().getFullYear()} SkillBridge BD. All rights reserved.
             </p>
           </div>
         </div>

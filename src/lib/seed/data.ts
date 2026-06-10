@@ -1,5 +1,5 @@
 /**
- * Seed data for the BDJobs AI marketplace.
+ * Seed data for the SkillBridge BD marketplace.
  * All names are unique Bangladeshi names with no duplicates across entities.
  * Salary ranges in BDT: entry 15000-30000, mid 30000-60000, senior 60000-120000.
  */

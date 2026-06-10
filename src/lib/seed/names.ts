@@ -47,7 +47,7 @@ export const COMPANY_NAMES = [
   'Pathao Technologies',
   'Chaldal Engineering',
   'ShopUp Digital',
-  'Bdjobs Online',
+  'SkillBridge Online',
   'Grameenphone Digital Lab',
   'SSL Wireless',
   'Brain Station 23',

@@ -1,4 +1,4 @@
-# BDJobs AI - Smart Job Marketplace for Bangladesh
+# SkillBridge BD - Smart Job Marketplace for Bangladesh
 
 An AI-powered job marketplace connecting talented professionals with top employers in Bangladesh. Features intelligent match scoring, real-time messaging, and comprehensive dashboards for both job seekers and employers.
 
@@ -17,7 +17,7 @@ An AI-powered job marketplace connecting talented professionals with top employe
 
 ## Architecture
 
-BDJobs AI uses a modern full-stack architecture built on Next.js App Router with Supabase as the backend:
+SkillBridge BD uses a modern full-stack architecture built on Next.js App Router with Supabase as the backend:
 
 ```
 +------------------+     +------------------+     +------------------+

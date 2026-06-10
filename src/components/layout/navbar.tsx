@@ -24,8 +24,8 @@ export function Navbar({ user }: NavbarProps) {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-primary-600">BDJobs</span>
-            <span className="text-xl font-bold text-secondary-600">AI</span>
+            <span className="text-xl font-bold text-primary-600">SkillBridge</span>
+            <span className="text-xl font-bold text-secondary-600">BD</span>
           </Link>
 
           {/* Desktop Navigation */}
