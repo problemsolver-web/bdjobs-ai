@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { logout } from '@/lib/actions/auth'
 import type { User } from '@/types/database'
@@ -19,7 +20,12 @@ export function Navbar({ user }: NavbarProps) {
     : '/dashboard/jobseeker'
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <motion.nav
+      className="bg-white/80 backdrop-blur-lg border-b border-gray-200/50 sticky top-0 z-50"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
@@ -247,6 +253,6 @@ export function Navbar({ user }: NavbarProps) {
           )}
         </div>
       )}
-    </nav>
+    </motion.nav>
   )
 }
