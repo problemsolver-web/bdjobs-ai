@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 interface AnimatedCounterProps {
   value: string
@@ -17,11 +17,12 @@ function parseValue(value: string): { num: number; suffix: string } {
 export function AnimatedCounter({ value, label }: AnimatedCounterProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
-  const [displayNum, setDisplayNum] = useState(0)
+  const shouldReduceMotion = useReducedMotion()
   const { num, suffix } = parseValue(value)
+  const [displayNum, setDisplayNum] = useState(0)
 
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView || shouldReduceMotion) return
 
     let startTime: number | null = null
     const duration = 2000
@@ -40,17 +41,19 @@ export function AnimatedCounter({ value, label }: AnimatedCounterProps) {
     }
 
     requestAnimationFrame(animate)
-  }, [isInView, num])
+  }, [isInView, num, shouldReduceMotion])
+
+  const shown = shouldReduceMotion ? num : displayNum
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6 }}
+      initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? { opacity: 1, y: 0 } : isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
     >
       <div className="text-3xl sm:text-4xl font-bold text-primary-600">
-        {displayNum}
+        {shown}
         {suffix}
       </div>
       <div className="mt-1 text-sm text-gray-600">{label}</div>

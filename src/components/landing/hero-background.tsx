@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
-// Pre-computed particle data to avoid Math.random in render
+// Pre-computed particle data (reduced to 15 for better mobile performance)
 const PARTICLE_DATA = [
   { size: 3, x: 12, y: 85, duration: 18, delay: 1, drift: 5 },
   { size: 4, x: 28, y: 23, duration: 22, delay: 3, drift: -8 },
@@ -20,24 +20,30 @@ const PARTICLE_DATA = [
   { size: 2, x: 42, y: 95, duration: 19, delay: 0, drift: 4 },
   { size: 5, x: 57, y: 58, duration: 22, delay: 2, drift: -9 },
   { size: 3, x: 73, y: 27, duration: 17, delay: 4, drift: 5 },
-  { size: 4, x: 88, y: 63, duration: 21, delay: 1, drift: -4 },
-  { size: 2, x: 15, y: 38, duration: 16, delay: 3, drift: 7 },
-  { size: 3, x: 32, y: 82, duration: 23, delay: 0, drift: -6 },
-  { size: 5, x: 48, y: 18, duration: 18, delay: 2, drift: 3 },
-  { size: 2, x: 62, y: 88, duration: 20, delay: 4, drift: -8 },
-  { size: 4, x: 77, y: 35, duration: 15, delay: 1, drift: 9 },
-  { size: 3, x: 93, y: 52, duration: 19, delay: 3, drift: -5 },
-  { size: 2, x: 25, y: 68, duration: 22, delay: 0, drift: 4 },
-  { size: 5, x: 38, y: 45, duration: 17, delay: 2, drift: -7 },
-  { size: 3, x: 55, y: 92, duration: 21, delay: 4, drift: 6 },
-  { size: 4, x: 69, y: 8, duration: 16, delay: 1, drift: -3 },
-  { size: 2, x: 84, y: 75, duration: 23, delay: 3, drift: 8 },
-  { size: 3, x: 5, y: 29, duration: 18, delay: 0, drift: -9 },
-  { size: 5, x: 22, y: 55, duration: 20, delay: 2, drift: 5 },
-  { size: 2, x: 95, y: 40, duration: 19, delay: 4, drift: -4 },
 ]
 
-function Particle({ data }: { data: typeof PARTICLE_DATA[number] }) {
+function Particle({
+  data,
+  reduceMotion,
+}: {
+  data: (typeof PARTICLE_DATA)[number]
+  reduceMotion: boolean
+}) {
+  if (reduceMotion) {
+    return (
+      <div
+        className="absolute rounded-full bg-white/20"
+        style={{
+          width: data.size,
+          height: data.size,
+          left: `${data.x}%`,
+          top: `${data.y}%`,
+          opacity: 0.4,
+        }}
+      />
+    )
+  }
+
   return (
     <motion.div
       className="absolute rounded-full bg-white/20"
@@ -64,6 +70,7 @@ function Particle({ data }: { data: typeof PARTICLE_DATA[number] }) {
 
 export function HeroBackground() {
   const particles = useMemo(() => PARTICLE_DATA, [])
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -71,11 +78,15 @@ export function HeroBackground() {
       <div className="absolute inset-0 animate-gradient-shift bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 bg-[length:200%_200%]" />
 
       {/* Secondary gradient overlay */}
-      <motion.div
-        className="absolute inset-0 opacity-30 bg-gradient-to-tr from-secondary-600/40 via-transparent to-purple-600/30"
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {shouldReduceMotion ? (
+        <div className="absolute inset-0 opacity-30 bg-gradient-to-tr from-secondary-600/40 via-transparent to-purple-600/30" />
+      ) : (
+        <motion.div
+          className="absolute inset-0 opacity-30 bg-gradient-to-tr from-secondary-600/40 via-transparent to-purple-600/30"
+          animate={{ opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      )}
 
       {/* Grid overlay */}
       <div
@@ -89,7 +100,7 @@ export function HeroBackground() {
 
       {/* Floating particles */}
       {particles.map((p, i) => (
-        <Particle key={i} data={p} />
+        <Particle key={i} data={p} reduceMotion={!!shouldReduceMotion} />
       ))}
 
       {/* Radial glow */}

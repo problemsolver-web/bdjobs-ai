@@ -142,3 +142,18 @@ body {
 .gradient-border:hover::before {
   opacity: 1;
 }
+
+/* Reduced motion support for accessibility (WCAG 2.1 SC 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-shift,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-particle-drift,
+  .animate-ripple {
+    animation: none;
+  }
+
+  .gradient-border::before {
+    animation: none;
+  }
+}

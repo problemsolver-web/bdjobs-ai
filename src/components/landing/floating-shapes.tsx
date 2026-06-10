@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 function RotatingCube({ className, delay = 0 }: { className: string; delay?: number }) {
   return (
@@ -61,7 +61,36 @@ function ConnectingLine({ className, delay = 0 }: { className: string; delay?: n
   )
 }
 
+function StaticShape({ className, size }: { className: string; size: number }) {
+  return (
+    <div className={`absolute ${className}`}>
+      <div
+        className="rounded-full bg-white/10 border border-white/20"
+        style={{ width: size, height: size }}
+      />
+    </div>
+  )
+}
+
 export function FloatingShapes() {
+  const shouldReduceMotion = useReducedMotion()
+
+  if (shouldReduceMotion) {
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <StaticShape className="top-[15%] left-[10%]" size={48} />
+        <StaticShape className="top-[60%] right-[15%]" size={48} />
+        <StaticShape className="bottom-[20%] left-[25%]" size={48} />
+        <StaticShape className="top-[25%] right-[25%]" size={16} />
+        <StaticShape className="top-[45%] left-[20%]" size={10} />
+        <StaticShape className="bottom-[30%] right-[30%]" size={20} />
+        <div className="absolute top-[20%] right-[35%] w-3 h-3 rounded-full bg-secondary-300/50 opacity-50" />
+        <div className="absolute bottom-[25%] left-[40%] w-2 h-2 rounded-full bg-white/40 opacity-40" />
+        <div className="absolute top-[55%] left-[55%] w-2.5 h-2.5 rounded-full bg-secondary-400/40 opacity-40" />
+      </div>
+    )
+  }
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Rotating cubes */}
