@@ -631,7 +631,7 @@ async function seedEmployers(): Promise<{ userIds: string[]; companyIds: string[
     // Create company
     const { data: companyData, error: companyError } = await supabase
       .from('companies')
-      .upsert({
+      .insert({
         owner_id: userId,
         name: employer.company.name,
         description: employer.company.description,
@@ -639,7 +639,7 @@ async function seedEmployers(): Promise<{ userIds: string[]; companyIds: string[
         location: employer.company.location,
         website: employer.company.website,
         verified: true,
-      }, { onConflict: 'owner_id' })
+      })
       .select('id')
       .single()
 
