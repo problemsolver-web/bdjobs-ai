@@ -39,12 +39,32 @@ export function Navbar({ user }: NavbarProps) {
                   Dashboard
                 </Link>
                 {user.role === 'jobseeker' && (
-                  <Link
-                    href="/dashboard/jobseeker/jobs"
-                    className="text-gray-600 hover:text-primary-600 font-medium text-sm"
-                  >
-                    Browse Jobs
-                  </Link>
+                  <>
+                    <Link
+                      href="/dashboard/jobseeker/jobs"
+                      className="text-gray-600 hover:text-primary-600 font-medium text-sm"
+                    >
+                      Browse Jobs
+                    </Link>
+                    <Link
+                      href="/dashboard/jobseeker/applications"
+                      className="text-gray-600 hover:text-primary-600 font-medium text-sm"
+                    >
+                      Applications
+                    </Link>
+                    <Link
+                      href="/dashboard/jobseeker/recommendations"
+                      className="text-gray-600 hover:text-primary-600 font-medium text-sm"
+                    >
+                      Recommendations
+                    </Link>
+                    <Link
+                      href="/dashboard/jobseeker/messages"
+                      className="text-gray-600 hover:text-primary-600 font-medium text-sm"
+                    >
+                      Messages
+                    </Link>
+                  </>
                 )}
                 {user.role === 'employer' && (
                   <>
@@ -59,6 +79,12 @@ export function Navbar({ user }: NavbarProps) {
                       className="text-gray-600 hover:text-primary-600 font-medium text-sm"
                     >
                       Company
+                    </Link>
+                    <Link
+                      href="/dashboard/employer/messages"
+                      className="text-gray-600 hover:text-primary-600 font-medium text-sm"
+                    >
+                      Messages
                     </Link>
                   </>
                 )}
@@ -135,6 +161,63 @@ export function Navbar({ user }: NavbarProps) {
               >
                 Dashboard
               </Link>
+              {user.role === 'jobseeker' && (
+                <>
+                  <Link
+                    href="/dashboard/jobseeker/jobs"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Browse Jobs
+                  </Link>
+                  <Link
+                    href="/dashboard/jobseeker/applications"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Applications
+                  </Link>
+                  <Link
+                    href="/dashboard/jobseeker/recommendations"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Recommendations
+                  </Link>
+                  <Link
+                    href="/dashboard/jobseeker/messages"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Messages
+                  </Link>
+                </>
+              )}
+              {user.role === 'employer' && (
+                <>
+                  <Link
+                    href="/dashboard/employer/jobs"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    My Jobs
+                  </Link>
+                  <Link
+                    href="/dashboard/employer/company"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Company
+                  </Link>
+                  <Link
+                    href="/dashboard/employer/messages"
+                    className="block py-2 text-gray-600 hover:text-primary-600 font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Messages
+                  </Link>
+                </>
+              )}
               <form action={logout}>
                 <button
                   type="submit"
