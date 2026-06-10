@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Transform the landing page into a visually stunning, modern page with 3D elements, dynamic animations, glassmorphism, animated counters, floating particles, gradient animations, and interactive hover effects. Keep all existing content/text and functionality intact.",
+  "status": "pending",
+  "steps": [
+    "Create a new client component at src/components/landing/hero-background.tsx that renders an animated gradient mesh background with floating particles/dots using framer-motion. Use CSS 3D transforms for floating geometric shapes (cubes, spheres, connections) that represent job connections. Include a subtle animated grid overlay.",
+    "Create a new client component at src/components/landing/animated-counter.tsx that uses framer-motion and Intersection Observer to animate numbers counting up when they scroll into view (for the stats section: 10K+, 50K+, 2K+, 95%).",
+    "Create a new client component at src/components/landing/feature-card.tsx that wraps each feature in a glassmorphism card with 3D tilt on mouse hover (using CSS perspective/transform), animated gradient borders, and a smooth entrance animation (fade-in, slide-up) triggered by scroll.",
+    "Create a new client component at src/components/landing/animated-button.tsx that adds a ripple effect on click, subtle gradient animation on hover, and a slight scale transform.",
+    "Create a new client component at src/components/landing/scroll-reveal.tsx - a reusable wrapper that uses framer-motion's useInView to fade-in and slide-up children when they enter the viewport.",
+    "Create a new client component at src/components/landing/floating-shapes.tsx that renders CSS 3D transformed geometric shapes (rotating cubes, orbiting circles, connecting lines) in the hero section to represent AI/connections theme.",
+    "Update src/app/globals.css to add keyframe animations for gradient-shift, float, pulse-glow, and particle-drift. Add utility classes for glassmorphism (.glass-card) and animated-gradient-border (.gradient-border). Keep all existing theme variables intact.",
+    "Rewrite src/app/page.tsx to import and compose all the new client components while keeping it as a server component. The hero section should use HeroBackground and FloatingShapes. Feature cards should use FeatureCard with glassmorphism. Stats should use AnimatedCounter. CTAs should use AnimatedButton. All sections should be wrapped in ScrollReveal for scroll-triggered animations. Keep ALL existing text content, links, and functionality exactly the same.",
+    "Update src/components/layout/navbar.tsx to add a subtle backdrop-blur glassmorphism effect (bg-white/80 backdrop-blur-lg) and a smooth entrance animation from framer-motion (slide down on mount).",
+    "Run `npm run build` to verify the production build passes with all new components"
+  ],
+  "acceptance_criteria": [
+    "Landing page hero section has an animated gradient background with floating 3D geometric shapes",
+    "Feature cards have glassmorphism styling (frosted glass effect with backdrop-blur)",
+    "Feature cards tilt in 3D on mouse hover using CSS perspective transforms",
+    "Stats numbers animate counting up when scrolled into view",
+    "All sections fade-in/slide-up when scrolled into view using framer-motion",
+    "Buttons have ripple effects on click and gradient hover animations",
+    "Floating particles/dots are visible in the hero background",
+    "Navbar has backdrop-blur glassmorphism effect",
+    "All existing text content, links, and functionality remain unchanged",
+    "Page is still a server component that imports client components",
+    "npm run build passes successfully"
+  ],
+  "verification": [
+    "Run `cd /projects/sandbox/bdjobs-ai && npm run build` and confirm exit code 0",
+    "Run `cd /projects/sandbox/bdjobs-ai && npm run lint` and confirm no errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

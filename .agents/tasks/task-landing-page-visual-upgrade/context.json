@@ -1,0 +1,27 @@
+{
+  "project_type": "Next.js 16 App Router with Supabase backend",
+  "language": "TypeScript",
+  "build_system": "npm with Next.js CLI",
+  "test_framework": "No test framework configured (no test scripts or test files)",
+  "build_command": "cd /projects/sandbox/bdjobs-ai && npm run build",
+  "test_command": "cd /projects/sandbox/bdjobs-ai && npm run lint",
+  "verification_instructions": "1. Run npm install to install dependencies. 2. Run npm run build to verify production build passes. 3. Run npm run lint to check for linting errors.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "cd /projects/sandbox/bdjobs-ai && npm install",
+  "environment_constraints": "OPEN_INTERNET - can install any npm packages. node_modules not currently installed - must run npm install first.",
+  "contribution_requirements": "AGENTS.md says to read node_modules/next/dist/docs/ before writing code, but this directory does not exist in this version. Use standard Next.js 16 App Router patterns. Server components by default, 'use client' only when needed.",
+  "key_patterns": "TailwindCSS v4 with @theme inline for custom colors (primary-*, secondary-*). App uses @/ path alias to src/. UI components in src/components/ui/ with simple prop interfaces. Layout uses Inter font via next/font/google. Server components for pages, 'use client' for interactive components like navbar.",
+  "relevant_files": [
+    "src/app/page.tsx",
+    "src/app/layout.tsx",
+    "src/app/globals.css",
+    "src/components/layout/navbar.tsx",
+    "src/components/ui/card.tsx",
+    "src/components/ui/button.tsx",
+    "src/app/(dashboard)/dashboard/jobseeker/page.tsx",
+    "package.json",
+    "postcss.config.mjs",
+    "tsconfig.json"
+  ],
+  "directory_structure": "src/app/ - App Router pages and layouts. src/app/(auth)/ - auth routes. src/app/(dashboard)/ - dashboard routes. src/components/ui/ - reusable UI components. src/components/layout/ - layout components (navbar). src/components/forms/ - form components. public/ - static assets."
+}

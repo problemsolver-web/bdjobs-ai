@@ -1,0 +1,7 @@
+{
+  "task_id": "task-landing-page-visual-upgrade",
+  "task_description": "Transform the plain landing page into a visually stunning, modern page with 3D elements, dynamic animations, glassmorphism, floating particles, animated counters, and interactive hover effects using framer-motion and CSS 3D transforms.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}

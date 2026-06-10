@@ -1,0 +1,23 @@
+{
+  "id": "FEAT-001",
+  "type": "chore",
+  "description": "Install dependencies (framer-motion) and verify baseline build passes. Set up the project for animation work.",
+  "status": "in_progress",
+  "steps": [
+    "Run `cd /projects/sandbox/bdjobs-ai && npm install` to install existing dependencies",
+    "Run `npm install framer-motion` to add the animation library",
+    "Run `npm run build` to verify everything builds correctly with the new dependency",
+    "Run `npm run lint` to verify no lint errors"
+  ],
+  "acceptance_criteria": [
+    "npm run build completes without errors",
+    "framer-motion is listed in package.json dependencies",
+    "npm run lint passes"
+  ],
+  "verification": [
+    "Run `cd /projects/sandbox/bdjobs-ai && npm run build` and confirm exit code 0",
+    "Run `cd /projects/sandbox/bdjobs-ai && npm run lint` and confirm exit code 0"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
